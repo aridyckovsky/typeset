@@ -1,3 +1,8 @@
+.DS_Store
+
+## Ignore generated build files
+.build/*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
