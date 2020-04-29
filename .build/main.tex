@@ -1,0 +1,46 @@
+% Main Document File
+% Drafted 04/29/2020 by Ari Dyckovsky
+
+% Document Class Definition
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=0.5in]{geometry}
+
+\usepackage[english]{babel}
+\usepackage{csquotes}
+
+% Block comments enabled
+\usepackage{comment}
+
+% Bibliography management via Biblatex and Biber
+\usepackage[
+  backend=biber,
+  style=apa,
+]{biblatex}
+\addbibresource{references.bib}
+
+% Packages
+% Add 'non-essential' packages here
+
+% Commands, new and renewed
+\newcommand{\categorization}[1]{[ \textbf{ #1 } ]}
+
+% Title, Author, and Date of document
+
+\title{Title of Article} % Put your title
+\author{Ari Dyckovsky} % Put your name
+\date{\today} % Customize or default to today's date
+
+\begin{document}
+
+\maketitle
+
+\section{Hello}
+
+How is the world today?
+
+\printbibliography[
+  title={References} % Rename if desired
+]
+
+\end{document}
+
