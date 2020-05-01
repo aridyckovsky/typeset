@@ -12,27 +12,21 @@ DEBUG="true"
 ROOT_DIR=$(shell pwd)
 BUILD_DIR=$(ROOT_DIR)/.build
 OUTPUT_DIR=$(ROOT_DIR)/output
+.PHONY: clean clearscreen
 
 XELATEX_OPTS=-output-directory=$(BUILD_DIR)
 BIBER_OPTS=-output-directory=$(BUILD_DIR)
 
 all: copy_sources doc copy_output
 
+clean:
+	@echo "Cleaning out the build and output directories..."
+	@cd $(BUILD_DIR); rm -rf *
+	@cd $(OUTPUT_DIR); rm -rf *
+
 copy_sources:
 	@echo "Copying sources to build directory: $(BUILD_DIR)"
 	@rsync --verbose --checksum --recursive --human-readable --progress --exclude=.build --exclude=.build_scripts --exclude=output --exclude=.git --exclude=.gitignore $(ROOT_DIR)/ $(BUILD_DIR)
-
-clean_build:
-	@echo "Cleaning out the build directory..."
-	@cd $(BUILD_DIR); rm -r *
-
-clean_output:
-	@echo "Cleaning out the output directory..."
-	@rm $(OUTPUT_DIR)/*
-
-clean:
-	clean_output
-	clean_build
 
 copy_output:
 	@echo "Copying generated PDFs to output folder: $(OUTPUT_DIR)"
