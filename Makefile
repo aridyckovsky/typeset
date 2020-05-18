@@ -19,6 +19,10 @@ BIBER_OPTS=-output-directory=$(BUILD_DIR)
 
 all: copy_sources doc copy_output
 
+spellcheck: 
+	hunspell -d en_US main.tex
+	@echo "Spellchecking complete."
+
 clean:
 	@echo "Cleaning out the build and output directories..."
 	@cd $(BUILD_DIR); rm -rf *
